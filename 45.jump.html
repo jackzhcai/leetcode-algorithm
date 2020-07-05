@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跳跃游戏 II</title>
+</head>
+<body>
+<script>
+  /**
+   * @param {number[]} nums
+   * @return {number}
+   */
+  var jump = function(nums) {
+    let most = 0
+    let step = 0
+    let end = 0
+    let len = nums.length
+    for (let i = 0; i < len - 1; i++) {
+      if ((i + nums[i]) > most) {
+        most = i + nums[i]
+      }
+      if (i === end) {
+        end = most
+        step++
+      }
+      if (end >= len - 1) {
+        break
+      }
+    }
+    return step
+  };
+  var nums = [2,3,1,1,4]
+  console.log(jump(nums))
+</script>
+</body>
+</html>

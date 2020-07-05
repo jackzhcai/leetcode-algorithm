@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无重复字符的最长子串</title>
+</head>
+<body>
+<script>
+  /**
+   * @param {string} s
+   * @return {number}
+   */
+  var lengthOfLongestSubstring = function(s) {
+    var str = ''
+    var size = 0
+    for (var i = 0, len = s.length; i < len; i++) {
+      var char = s.charAt(i)
+      var index = str.indexOf(char)
+      if (index === -1) {
+        str = str + char
+        size = Math.max(size, str.length)
+      } else {
+        str = str.substr(index + 1) + char
+      }
+    }
+    return size
+  };
+  console.log(lengthOfLongestSubstring('pwwkew'))
+
+</script>
+</body>
+</html>

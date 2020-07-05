@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>翻转二叉树</title>
+</head>
+<body>
+<script>
+  /**
+   * Definition for a binary tree node.
+   * function TreeNode(val) {
+   *     this.val = val;
+   *     this.left = this.right = null;
+   * }
+   */
+  /**
+   * @param {TreeNode} root
+   * @return {TreeNode}
+   */
+  var invertTree = function(root) {
+    function traversal (node) {
+      if (node === null) {
+        return null
+      } else {
+        var left = traversal(node.left)
+        var right = traversal(node.right)
+        node.left = right
+        node.right = left
+        return node
+      }
+    }
+    return traversal(root)
+  };
+</script>
+</body>
+</html>

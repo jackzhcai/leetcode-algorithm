@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全排列</title>
+</head>
+<body>
+<script>
+  /**
+   * @param {number[]} nums
+   * @return {number[][]}
+   */
+  var permute = function(nums) {
+    // 一
+    let result = []
+    let len = nums.length
+    helper([])
+    return result
+
+    function helper(path) {
+      if (path.length === len) {
+        result.push(path.slice(0))
+        return
+      }
+      for (var i = 0; i < len; i++) {
+        if (path.includes(nums[i])) {
+          continue
+        }
+        path.push(nums[i])
+        helper(path)
+        path.pop()
+      }
+    }
+
+    // 二
+    // let result = []
+    // function swap(p, q) {
+    //   if (p === q) return
+    //   [nums[p], nums[q]] = [nums[q], nums[p]]
+    // }
+    //
+    // function helper(p, q) {
+    //   if (p === q) {
+    //     result.push(nums.slice(0))
+    //     return
+    //   }
+    //   for (let i = p; i <= q; i++) {
+    //     swap(p, i)
+    //     helper(p+1, q)
+    //     swap(p, i)
+    //   }
+    // }
+    // helper(0, nums.length - 1)
+    // return result
+  };
+
+
+  let arr = [1,2,3]
+    console.log(permute(arr))
+</script>
+</body>
+</html>

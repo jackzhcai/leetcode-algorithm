@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>二叉树的前序遍历</title>
+</head>
+<body>
+<script>
+  /**
+   * Definition for a binary tree node.
+   * function TreeNode(val) {
+   *     this.val = val;
+   *     this.left = this.right = null;
+   * }
+   */
+  /**
+   * @param {TreeNode} root
+   * @return {number[]}
+   */
+  var preorderTraversal = function(root) {
+    var result = []
+    function traversal (node) {
+      if (node !== null) {
+        result.push(node.val)
+        if (node.left !== null) {
+          traversal(node.left)
+        }
+        if (node.right !== null) {
+          traversal(node)
+        }
+      }
+    }
+    traversal(root)
+    return result
+    // var result = []
+    // function traversal (node) {
+    //   if (node !== null) {
+    //     result.push(node.val)
+    //     if (node.left !== null) {
+    //       traversal(node.left)
+    //     }
+    //     if (node.right !== null) {
+    //       traversal(node.right)
+    //     }
+    //   }
+    // }
+    // traversal(root)
+    // return result
+  };
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组合</title>
+</head>
+<body>
+<script>
+  /**
+   * 39: 组合总和
+   * 40: 组合总和II
+   * 46: 全排列
+   * 47: 全排列II
+   * 77: 组合
+   * 78: 子集
+   * 90: 子集II
+   * @param {number} n
+   * @param {number} k
+   * @return {number[][]}
+   */
+  var combine = function(n, k) {
+    var result = []
+    var subResult = []
+    if (k > n) return result
+
+    function dfs(start, subResult) {
+      if (subResult.length === k) {
+        result.push(subResult.slice(0))
+        return
+      }
+      for (var i = start; i <= n; i++) {
+        subResult.push(i)
+        dfs(i + 1, subResult)
+        subResult.pop()
+      }
+    }
+    dfs(1, subResult)
+    return result
+  };
+  console.log(combine(4, 2))
+</script>
+</body>
+</html>

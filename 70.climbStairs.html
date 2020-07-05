@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>爬楼梯</title>
+</head>
+<body>
+<script>
+  /**
+   * @param {number} n
+   * @return {number}
+   */
+  var climbStairs = function(n) {
+    if (n < 3) {
+      return n
+    }
+    var fst = 1
+    var result = 2
+    for (var i = 3; i <= n; i++) {
+      var temp = fst
+      fst = result
+      result = result + temp
+    }
+    return result
+
+
+    // 二
+    // function stairs(i, n) {
+    //   if (i > n) {
+    //     return 0
+    //   }
+    //   if (i === n) {
+    //     return 1
+    //   }
+    //   return stairs(i + 1, n) + stairs (i + 2, n)
+    // }
+    // return stairs(0, n)
+
+    // 三
+    // var arr = new Array(n + 1).fill(0)
+    // var m = stairs(0, n, arr)
+    // return m
+    // function stairs (i, n, ars) {
+    //   if (i > n) {
+    //     return 0
+    //   }
+    //   if (i === n) {
+    //     return 1
+    //   }
+    //   if (ars[i] > 0) {
+    //     return ars[i]
+    //   }
+    //   ars[i] = stairs(i + 1, n, ars) + stairs(i + 2, n, ars)
+    //   return ars[i]
+    // }
+
+    // 四
+    // const memo = [0, 1, 2]
+    // for (var i = 3; i <= n; i++) {
+    //   memo[i] = memo[i - 1] + memo[i - 2]
+    // }
+    // return memo[n]
+  };
+  console.log(climbStairs(5))
+</script>
+</body>
+</html>

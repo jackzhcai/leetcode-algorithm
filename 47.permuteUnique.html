@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全排列 II</title>
+</head>
+<body>
+<script>
+  /**
+   * @param {number[]} nums
+   * @return {number[][]}
+   */
+  var permuteUnique = function(nums) {
+
+    // 一
+    if(nums.length < 2) return [nums];
+    nums.sort((a,b) => a - b);
+    function _perm(nums) {
+      if(nums.length < 2) return nums;
+      let res = [];
+      for(let i = 0 ; i < nums.length ; i ++) {
+        if(nums[i] === nums[i + 1]) continue;
+        let start = nums[i];
+        let remain = nums.slice(0, i).concat(nums.slice(i + 1));
+        for(let end of _perm(remain)) {
+          res.push([start].concat(end));
+        }
+      }
+      return res;
+    }
+    return _perm(nums)
+
+    // 二
+    // let len = nums.length
+    // nums.sort((a,b) => a-b)
+    // let res = []
+    // let temp = []
+    // let idx = []
+    // helper(temp,idx)
+    // return res
+    //
+    //
+    // function helper(temp,idx) {
+    //   if (temp.length === len) {
+    //     res.push(temp)
+    //     return
+    //   }
+    //
+    //   for (let i = 0; i < len; i++) {
+    //     if (nums[i] === nums[i-1] && idx.includes(i-1)) {
+    //       continue
+    //     }
+    //     if (!idx.includes(i)) {
+    //       temp.push(nums[i])
+    //       idx.push(i)
+    //       helper(temp.slice(),idx.slice())
+    //       temp.pop()
+    //       idx.pop()
+    //     }
+    //   }
+    // }
+  };
+</script>
+</body>
+</html>

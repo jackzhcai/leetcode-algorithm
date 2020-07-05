@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简化路径</title>
+</head>
+<body>
+<script>
+  /**
+   * @param {string} path
+   * @return {string}
+   */
+  var simplifyPath = function(path) {
+
+    var stack = []
+    var pathArr = path.split(/\/+/)
+
+    for (var item of pathArr) {
+        if (item === '.' || item === '') {
+          continue
+        } else if (item === '..') {
+          stack.pop()
+        } else {
+          stack.push(item)
+        }
+    }
+    return '/' + stack.join('/')
+
+    // var stack = []
+    // var pathArr = path.split('/')
+    // for (var item of pathArr) {
+    //   if (item === '.' || item === '') {
+    //     continue
+    //   } else if (item === '..') {
+    //     stack.pop()
+    //   } else {
+    //     stack.push(item)
+    //   }
+    // }
+    // return '/' + stack.join('/')
+  };
+  console.log(simplifyPath('/a/../../b/../c//.//'))
+</script>
+</body>
+</html>

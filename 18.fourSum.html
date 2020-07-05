@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>四数之和</title>
+</head>
+<body>
+<script>
+
+  /**
+   * @param {number[]} nums
+   * @param {number} target
+   * @return {number[][]}
+   */
+  var fourSum = function (nums, target) {
+    //
+    function exist(ans, item) {
+      let itemStr = item.toString();
+      for (let i = 0; i < ans.length; i++) {
+        if (ans[i].toString() === itemStr) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    // 一
+    let result = []
+    let len = nums.length
+    if (len < 4) {
+      return result
+    }
+    for (let i = 0; i < len - 3; i++) {
+      for (let j = i + 1; j < len - 2; j++) {
+        for (let x = j + 1; x < len - 1; x++) {
+          for (let y = x + 1; y < len; y++) {
+            if (nums[i] + nums[j] + nums[x] + nums[y] === target) {
+              let temp = [nums[i], nums[j], nums[x], nums[y]].sort((a, b) => a - b)
+              if (!exist(result, temp)) {
+                result.push(temp)
+              }
+            }
+          }
+        }
+      }
+    }
+    return result
+
+
+    // 二
+    // let result = []
+    // let len = nums.length
+    // if (len < 4) {
+    //   return result
+    // }
+    // for (let i = 0; i < len - 2; i++) {
+    //   for (let j = i + 1; j < len - 1; j++) {
+    //     let map = {}
+    //     for (let x = j + 1; x < len; x++) {
+    //       if (map[nums[x]]) {
+    //         let temp = [nums[x], ...map[nums[x]]].sort((a, b) => a - b)
+    //         if (!exist(result, temp)) {
+    //           result.push(temp)
+    //         }
+    //       } else {
+    //         let key = target - nums[i] - nums[j] - nums[x]
+    //         map[key] = [nums[i], nums[j], nums[x]]
+    //       }
+    //     }
+    //   }
+    // }
+    // return result
+  };
+  let nums = [1, 0, -1, 0, -2, 2]
+  let target = 0
+  console.log(fourSum(nums, target))
+</script>
+</body>
+</html>

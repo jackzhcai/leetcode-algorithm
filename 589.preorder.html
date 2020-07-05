@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>N叉树的前序遍历</title>
+</head>
+<body>
+<script>
+  /**
+   * // Definition for a Node.
+   * function Node(val, children) {
+   *    this.val = val;
+   *    this.children = children;
+   * };
+   */
+
+  /**
+   * @param {Node} root
+   * @return {number[]}
+   */
+  var preorder = function(root) {
+    // var stack = []
+    // var result = []
+    // stack.push(root)
+    // while (stack.length) {
+    //   var current = stack.pop()
+    //   if (current === null) {
+    //     continue
+    //   }
+    //   result.push(current.val)
+    //   if (current.children !== null) {
+    //     for (var i = current.children.length - 1; i >= 0; i--) {
+    //       stack.push(current.children[i])
+    //     }
+    //   }
+    // }
+    // return result
+
+
+    // let result = [], current = root;
+    // while(current){
+    //   result.push(current.val);
+    //   let temp = current.children;
+    //   if(!temp.length) return result;
+    //   current = current.children.shift();
+    //   let next = current;
+    //   while (next.children && next.children.length) {
+    //     next = next.children[next.children.length - 1];
+    //   }
+    //   next.children = temp;
+    // }
+    // return result;
+
+
+    var result = []
+    traversal(root)
+    return result
+    function traversal (node) {
+      if (node !== null) {
+        result.push(node.val)
+        var current = node.children
+        current && current.forEach(function (item) {
+          traversal(item)
+        })
+      }
+    }
+  };
+
+  var root = {
+    val: 1,
+    children: [{
+      val: 3,
+      children: [{
+        val: 5
+      }, {
+        val: 6
+      }]
+    }, {
+      val: 2
+    }, {
+      val: 4
+    }]
+  }
+
+  console.log(preorder(root))
+
+</script>
+</body>
+</html>

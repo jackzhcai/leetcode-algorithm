@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跳跃游戏</title>
+</head>
+<body>
+<script>
+  /**
+   * @param {number[]} nums
+   * @return {boolean}
+   */
+  var canJump = function(nums) {
+    let len = nums.length
+    let most = 0
+
+    for (let i = 0; i < len; i++) {
+      if (i <= most) {
+        most = Math.max(most, i + nums[i])
+        if (most >= len - 1) {
+          return true
+        }
+      }
+    }
+    return false
+  };
+  var nums = [2,3,1,1,4]
+    console.log(canJump(nums))
+</script>
+</body>
+</html>

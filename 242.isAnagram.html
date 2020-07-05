@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>有效的字母异位词</title>
+</head>
+<body>
+<script>
+  /**
+   * @param {string} s
+   * @param {string} t
+   * @return {boolean}
+   */
+  var isAnagram = function(s, t) {
+    var maps = new Map()
+    for (var i = 0; i < s.length; i++) {
+      var oStr = s[i]
+      if (maps.get(oStr) !== undefined) {
+        maps.set(oStr, maps.get(oStr) + 1)
+      } else {
+        maps.set(oStr, 1)
+      }
+    }
+    for (var j = 0; j < t.length; j++) {
+      var tStr = t[j]
+      if (maps.get(tStr) !== undefined) {
+        maps.set(tStr, maps.get(tStr) - 1)
+        if (maps.get(tStr) === 0) {
+          maps.delete(tStr)
+        }
+      } else {
+        maps[tStr] = 1
+      }
+    }
+
+    if (maps.size) {
+      return false
+    }
+    return true
+
+
+    // 一
+    // var maps = {}
+    // for (var i = 0; i < s.length; i++) {
+    //   var oStr = s.charAt(i)
+    //   if (maps[oStr] !== undefined) {
+    //     maps[oStr] = maps[oStr] + 1
+    //   } else {
+    //     maps[oStr] = 1
+    //   }
+    // }
+    // for (var j = 0; j < t.length; j++) {
+    //   var tStr = t.charAt(j)
+    //   if (maps[tStr] !== undefined) {
+    //     maps[tStr] = maps[tStr] - 1
+    //   } else {
+    //     maps[tStr] = 1
+    //   }
+    // }
+    // for (var key in maps) {
+    //   if (maps[key] > 0) {
+    //     return false
+    //   }
+    // }
+    // return true
+
+    // 二
+    // if (s.length !== t.length) {
+    //   return false
+    // }
+    //
+    // while (s.length > 0) {
+    //   if (s.length !== t.length) {
+    //     return false
+    //   }
+    //   var reg = new RegExp(s[0], 'g')
+    //   //
+    //   s = s.replace(reg, '')
+    //   t = t.replace(reg, '')
+    // }
+    // if (s !== '' || t !== '') {
+    //   return false
+    // }
+    // return true
+
+    // 三
+    // return s.split('').sort().join('') === t.split('').sort().join('')
+  };
+  var s = "anagram",
+    t = "nagaram";
+    console.log(isAnagram(s, t))
+</script>
+</body>
+</html>

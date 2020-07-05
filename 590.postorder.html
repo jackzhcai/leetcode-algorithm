@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>N叉树的后序遍历</title>
+</head>
+<body>
+<script>
+  /**
+   * // Definition for a Node.
+   * function Node(val,children) {
+   *    this.val = val;
+   *    this.children = children;
+   * };
+   */
+
+  /**
+   * @param {Node} root
+   * @return {number[]}
+   */
+  var postorder = function (root) {
+    var result = []
+
+    function traversal(node) {
+      if (node !== null) {
+        for (var i = 0, len = node.children.length; i < len; i++) {
+          var child = node.children[i]
+          if (child !== null) {
+            traversal(child)
+          }
+        }
+        result.push(node.val)
+      }
+    }
+
+    traversal(root)
+    return result
+  };
+</script>
+</body>
+</html>

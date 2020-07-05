@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>最小的k个数</title>
+</head>
+<body>
+<script>
+  /**
+   * @param {number[]} arr
+   * @param {number} k
+   * @return {number[]}
+   */
+  var getLeastNumbers = function (arr, k) {
+    arr.sort((a, b) => a - b)
+    return arr.slice(0, k)
+  };
+
+</script>
+</body>
+</html>

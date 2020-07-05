@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>括号生成</title>
+</head>
+<body>
+<script>
+  /**
+   * @param {number} n
+   * @return {string[]}
+   */
+  var generateParenthesis = function(n) {
+
+    // 一
+    // var result = []
+    // function _gen(left, right, n, s) {
+    //   // terminator
+    //   if (left === n && right === n) {
+    //     result.push(s)
+    //     return
+    //   }
+    //   // process current logic
+    //
+    //   // drill down
+    //   if (left < n) {
+    //     _gen(left + 1, right, n, s + '(')
+    //   }
+    //   if (left > right) {
+    //     _gen(left, right + 1, n, s + ')')
+    //   }
+    //
+    //   // reverse states
+    // }
+    // _gen(0, 0, n, '')
+    // return result
+
+    // 二
+    var result = []
+    function _gen(left, right, s) {
+      if (left === 0 && right === 0) {
+        result.push(s)
+        return
+      }
+      if (left > 0) {
+        _gen(left - 1, right, s + '(')
+      }
+      if (right > left) {
+        _gen(left, right - 1, s + ')')
+      }
+    }
+    _gen(n, n, '')
+    return result
+
+
+    // function _gen(level, max, s) {
+    //   if (level >= max) {
+    //     console.log(s)
+    //     return
+    //   }
+    //   _gen(level + 1, max, s + '(')
+    //   _gen(level + 1, max, s + ')')
+    // }
+    //
+    // _gen(0, 2 * n, '')
+
+  };
+  console.log(generateParenthesis(3))
+</script>
+</body>
+</html>

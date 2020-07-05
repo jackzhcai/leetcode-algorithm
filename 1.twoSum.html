@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>两数之和</title>
+</head>
+<body>
+<script>
+  /**
+   * @description 1.两数之和
+   * @param {number[]} nums
+   * @param {number} target
+   * @return {number[]}
+   */
+  var twoSum = function(nums, target) {
+    if (!nums.length) {
+      return []
+    }
+    var map = new Map()
+    for (var i = 0; i < nums.length; i++) {
+      var diff = target - nums[i]
+      if (map.has(diff)) {
+        return [map.get(diff), i]
+      }
+      map.set(nums[i], i)
+    }
+    return []
+
+
+    // var maps = {}
+    // for (var i = 0; i < nums.length; i++) {
+    //   var diff = target - nums[i]
+    //   if (maps[diff] !== undefined) {
+    //     return [maps[diff], i]
+    //   }
+    //   maps[nums[i]] = i
+    // }
+    // return []
+  };
+  var nums = [2, 7, 11, 15], target = 9
+    console.log(twoSum(nums, target))
+</script>
+</body>
+</html>

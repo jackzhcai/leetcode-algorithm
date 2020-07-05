@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>滑动窗口最大值</title>
+</head>
+<body>
+<script>
+  /**
+   * @param {number[]} nums
+   * @param {number} k
+   * @return {number[]}
+   */
+  var maxSlidingWindow = function(nums, k) {
+    // 一
+    // var result = []
+    // var arr = []
+    // for (var i = 0; i < nums.length; i++) {
+    //   arr.push(nums[i])
+    //   if (i >= k-1) {
+    //     result.push(Math.max(...arr))
+    //     arr.shift()
+    //   }
+    // }
+    // return result
+
+    // 二
+    // var len = nums.length
+    // if (len === 0) {
+    //   return []
+    // }
+    // var result = []
+    // for (var i = 0; i <= len - k; i++) {
+    //   var max = (-10^4) - 1
+    //   for (var j = i; j < i + k; j++) {
+    //     max = Math.max(max, nums[j])
+    //   }
+    //   result.push(max)
+    // }
+    // return result
+
+
+    var len = nums.length
+    if (len === 0) {
+      return []
+    }
+    var result = []
+    for (var i = 0; i <= len - k; i++) {
+      var arr = []
+      for (var j = i; j < i + k; j++) {
+        arr.push(nums[j])
+      }
+      result.push(Math.max.apply(null, arr))
+    }
+    return result
+  };
+  var nums = [1,3,-1,-3,5,3,6,7], k = 3
+
+    console.log(maxSlidingWindow(nums, k))
+</script>
+</body>
+</html>
